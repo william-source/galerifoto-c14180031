@@ -1,17 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      GAME TEBAK ANGKA 1 - 5
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <b>KESEMPATAN : </b> {{life}}
+  {{status}}
+  {{angkarandom}}
+  <ion-item>
+    <ion-label><b>Masukan Angka : </b></ion-label>
+    <ion-input placeholder="0" type="number" [(ngModel)]="tebakan"></ion-input>
+  </ion-item>
+  <ion-button (click)="tebak()" *ngIf="life!=0">
+    <ion-icon slot="start" name="star"></ion-icon>
+    TEBAK
+  </ion-button>
+  
+  <ion-button (click)="cobalagi()"  *ngIf="life == 0">
+    <ion-icon slot="start" name="refresh"></ion-icon>
+    COBA LAGI
+  </ion-button>
+  <b>{{hasil}}</b>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-item *ngIf="status==MENANG">
+    <ion-img [src]="isiFoto.webviewPath"></ion-img>
+  </ion-item>
 </ion-content>
