@@ -7,9 +7,14 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <b>KESEMPATAN : </b> {{life}}
-  {{status}}
-  {{angkarandom}}
+
+  <ion-item *ngIf="life != 0">
+    <b>KESEMPATAN : </b> {{life}}
+  </ion-item>
+  <ion-item *ngIf="life == 0">
+    <b>{{status}}</b> 
+  </ion-item>
+  <!-- {{angkarandom}} -->
   <ion-item>
     <ion-label><b>Masukan Angka : </b></ion-label>
     <ion-input placeholder="0" type="number" [(ngModel)]="tebakan"></ion-input>
@@ -24,8 +29,10 @@
     COBA LAGI
   </ion-button>
   <b>{{hasil}}</b>
-
-  <ion-item *ngIf="status==MENANG">
-    <ion-img [src]="isiFoto.webviewPath"></ion-img>
+  <ion-item *ngIf="status == 'MENANG'">
+    <img src ="/assets/images/coba.jpg">
   </ion-item>
+
+    
+
 </ion-content>

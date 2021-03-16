@@ -9,18 +9,19 @@ import { FotoService } from '../services/foto.service';
 })
 export class Tab2Page {
   
-  constructor(public fotoService:FotoService) {}
+  constructor() {}
 
   hasil=""
   tebakan:number
   angkarandom:number
   life = 3
   status=""
+
  
   ngOnInit(){
     this.angkarandom= this.float2int(Math.random() *(5-0)+0)
   }
-  async tebak(){
+   tebak(){
     if(this.tebakan!=this.angkarandom){
       this.hasil="SALAH"
       this.life -= 1
@@ -34,7 +35,7 @@ export class Tab2Page {
       if(this.life==0){
         this.hasil="PERMAINAN BERAKHIR"
         this.status="MENANG"
-        await this.fotoService.loadFoto();
+
       }
       
     }
@@ -47,6 +48,7 @@ export class Tab2Page {
     this.tebakan=0
     this.angkarandom= this.float2int(Math.random() *(5-0)+0)
     this.status=""
+
   }
   float2int(value){
     return value | 0;
